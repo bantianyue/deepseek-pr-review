@@ -1,0 +1,40 @@
+name: DeepSeek PR Review
+description: Post an AI-powered pull request review using the DeepSeek OpenAI-compatible API.
+author: bantianyue
+
+branding:
+  icon: search
+  color: blue
+
+inputs:
+  deepseek-api-key:
+    description: DeepSeek API key (or set DEEPSEEK_API_KEY env).
+    required: true
+  github-token:
+    description: Token with pull-requests write access.
+    required: false
+    default: ${{ github.token }}
+  model:
+    description: DeepSeek chat model name.
+    required: false
+    default: deepseek-chat
+  base-url:
+    description: OpenAI-compatible API base URL (no trailing slash).
+    required: false
+    default: https://api.deepseek.com
+  advisory:
+    description: When true, only update the PR comment (no formal review event).
+    required: false
+    default: "true"
+  max-diff-chars:
+    description: Skip review when the unified diff exceeds this many characters (0 = unlimited).
+    required: false
+    default: "120000"
+  system-prompt:
+    description: Optional override for the system prompt sent to DeepSeek.
+    required: false
+    default: ""
+
+runs:
+  using: node20
+  main: dist/index.js

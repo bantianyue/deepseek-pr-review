@@ -1,0 +1,23 @@
+# Example workflow — copy to .github/workflows/deepseek-pr-review.yml in your repository.
+
+name: DeepSeek PR Review
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, ready_for_review]
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  deepseek-pr-review:
+    runs-on: ubuntu-latest
+    steps:
+      - name: DeepSeek PR review
+        uses: bantianyue/deepseek-pr-review@v1
+        with:
+          deepseek-api-key: ${{ secrets.DEEPSEEK_API_KEY }}
+          # advisory: "true"  # default — comment only
+          # model: deepseek-chat
+          # base-url: https://api.deepseek.com

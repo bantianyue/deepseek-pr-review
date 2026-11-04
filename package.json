@@ -1,0 +1,22 @@
+{
+  "name": "deepseek-pr-review",
+  "version": "1.0.0",
+  "description": "GitHub Action: DeepSeek-powered PR review",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "ncc build src/index.ts -o dist --license licenses.txt",
+    "test": "node --test tests/dry-run.test.mjs",
+    "lint": "tsc --noEmit"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "@actions/core": "^1.6.0",
+    "@actions/github": "^6.0.0"
+  },
+  "devDependencies": {
+    "@octokit/rest": "^21.0.0",
+    "@types/node": "^22.10.0",
+    "@vercel/ncc": "^0.38.3",
+    "typescript": "^5.7.2"
+  }
+}
